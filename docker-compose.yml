@@ -1,9 +1,12 @@
 version: "3.8"
 services:
   web:
+    container_name: fraud-detection-app
     build: .
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
+    env_file:
+      - .env
     restart: always
