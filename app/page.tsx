@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import DemoModal from '../components/DemoModal'
 import { 
   ArrowRight, ChevronDown, ChevronUp,
   FileText,
@@ -32,6 +33,7 @@ const productTabs = [
 ]
 
 export default function Home() {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [expandedLayer, setExpandedLayer] = useState<number | null>(0)
   const [expandedAgent, setExpandedAgent] = useState<number | null>(0)
@@ -250,7 +252,10 @@ export default function Home() {
               <a href="#testimonials" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Stories</a>
             </div>
             <div className="flex items-center">
-              <button className="px-6 py-2.5 bg-gradient-to-r from-[#1E88E5] via-[#42A5F5] to-[#1565C0] text-white rounded-lg font-semibold text-sm tracking-wide hover:shadow-lg hover:shadow-[#1E88E5]/30 transition-all duration-300 hover:scale-105 active:scale-95">
+              <button 
+                onClick={() => setIsDemoModalOpen(true)}
+                className="px-6 py-2.5 bg-gradient-to-r from-[#1E88E5] via-[#42A5F5] to-[#1565C0] text-white rounded-lg font-semibold text-sm tracking-wide hover:shadow-lg hover:shadow-[#1E88E5]/30 transition-all duration-300 hover:scale-105 active:scale-95"
+              >
                 Get a Demo
               </button>
             </div>
@@ -297,7 +302,10 @@ export default function Home() {
               </p>
 
               <div className="pt-2 animate-delay-300">
-                <button className="px-8 py-4 bg-gradient-to-r from-[#1E88E5] via-[#42A5F5] to-[#1565C0] text-white rounded-lg font-semibold text-base md:text-lg tracking-wide hover:shadow-xl hover:shadow-[#1E88E5]/30 transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#1E88E5] focus:ring-offset-2 transform transition-bounce">
+                <button 
+                  onClick={() => setIsDemoModalOpen(true)}
+                  className="px-8 py-4 bg-gradient-to-r from-[#1E88E5] via-[#42A5F5] to-[#1565C0] text-white rounded-lg font-semibold text-base md:text-lg tracking-wide hover:shadow-xl hover:shadow-[#1E88E5]/30 transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#1E88E5] focus:ring-offset-2 transform transition-bounce"
+                >
                   Get a Demo →
                 </button>
               </div>
@@ -1085,7 +1093,10 @@ export default function Home() {
               The first AI Co-Pilot that stops fraud and explains why. Deploy our headless API in your AWS environment and start protecting capital at the pre-approval stage with real-time fraud detection.
             </p>
             <div className="pt-2">
-              <button className="px-8 md:px-10 py-4 md:py-5 bg-gradient-to-r from-[#1E88E5] via-[#42A5F5] to-[#1565C0] text-white rounded-lg font-semibold text-base md:text-lg hover:shadow-xl hover:shadow-[#1E88E5]/30 transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none transform transition-bounce">
+              <button 
+                onClick={() => setIsDemoModalOpen(true)}
+                className="px-8 md:px-10 py-4 md:py-5 bg-gradient-to-r from-[#1E88E5] via-[#42A5F5] to-[#1565C0] text-white rounded-lg font-semibold text-base md:text-lg hover:shadow-xl hover:shadow-[#1E88E5]/30 transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none transform transition-bounce"
+              >
                 Get a Demo →
               </button>
             </div>
@@ -1183,6 +1194,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      <DemoModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
     </main>
   )
 }
